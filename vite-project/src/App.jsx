@@ -14,11 +14,11 @@ function App() {
       alert("please fill detail carefully");
       return;
     }
-    const totalAmount = parseFloat(amount);
-    const people = parseInt(numPeople, 10);
+    const totalAmount = Number(amount);
+    const people = Number(numPeople, 10);
     const customTipPercentage = customTip
-      ? parseInt(customTip)
-      : parseInt(tipPercentage);
+      ? Number(customTip)
+      : Number(tipPercentage);
 
     if (totalAmount && people > 0) {
       const tipAmount = (totalAmount * customTipPercentage) / 100;
