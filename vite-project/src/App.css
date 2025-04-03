@@ -1,0 +1,26 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.inputs {
+  width: 13%;
+}
+.inputs button {
+  padding: 5px 10px;
+  margin: 4px 1px;
+}
+.amount,
+.PercentTip,
+.customTip,
+.totalPerson {
+  margin: 10px 0;
+}
+.BillSplitter{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.heading{
+  text-align: center;
+}
