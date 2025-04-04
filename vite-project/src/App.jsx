@@ -36,7 +36,14 @@ function App() {
 
     const totalAmount = Number(amount);
 
-    if (totalAmount) {
+    const customTipPercentage = Number(percent)
+
+    if (totalAmount && customTipPercentage && numPeople) {
+      const tipAmount = (totalAmount * customTipPercentage) / 100;
+      const totalBill = totalAmount + tipAmount;
+      setFinalTip(tipAmount);
+      setTotal(totalBill);
+    } else if (totalAmount) {
       const tipAmount = (totalAmount * percent) / 100;
 
       setFinalTip(tipAmount);
@@ -78,12 +85,14 @@ function App() {
     const totalAmount = Number(amount);
     const customTipPercentage = value ? Number(value) : 0;
 
-    if (totalAmount && customTipPercentage >= 0) {
+    if (totalAmount && customTipPercentage && numPeople) {
+      const tipAmount = (totalAmount * customTipPercentage) / 100;
+      const totalBill = totalAmount + tipAmount;
+      setFinalTip(tipAmount);
+      setTotal(totalBill);
+    } else if (totalAmount && customTipPercentage >= 0) {
       const tipAmount = (totalAmount * customTipPercentage) / 100;
       setFinalTip(tipAmount);
-    }
-    if (numpeople > 0) {
-      handleNumPeople();
     }
   }
 
