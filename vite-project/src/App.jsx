@@ -8,6 +8,7 @@ function App() {
   const [finalTip, setFinalTip] = useState(0);
   const [total, setTotal] = useState(0);
   const [perPerson, setPerPerson] = useState(0);
+  console.log(numPeople);
 
   function calculateBill() {
     if (!amount || (customTip === "" && tipPercentage === "") || !numPeople) {
@@ -25,15 +26,21 @@ function App() {
       const totalBill = totalAmount + tipAmount;
       const perPersonAmount = totalBill / people;
 
-      setFinalTip(tipAmount);
-      setTotal(totalBill);
       setPerPerson(perPersonAmount);
     }
   }
 
   function handleTipClick(percent) {
     setTipPercentage(percent);
-    setCustomTip(percent);
+    setCustomTip("");
+
+    const totalAmount = Number(amount);
+
+    if (totalAmount) {
+      const tipAmount = (totalAmount * percent) / 100;
+
+      setFinalTip(tipAmount);
+    }
   }
 
   function HandleReset() {
@@ -44,6 +51,40 @@ function App() {
     setFinalTip(0);
     setTotal(0);
     setPerPerson(0);
+  }
+  function handleNumPeople(e) {
+    const value = e.target.value;
+    setNumPeople(value);
+
+    const totalAmount = Number(amount);
+
+    const customTipPercentage = tipPercentage
+      ? Number(tipPercentage)
+      : Number(customTip);
+
+    if (amount && (customTip || tipPercentage) && value > 0) {
+      const TipAmount = (totalAmount * customTipPercentage) / 100;
+      const totalBill = totalAmount + TipAmount;
+
+      setTotal(totalBill);
+    }
+  }
+
+  function handleCustomTip(e) {
+    const value = e.target.value;
+    setCustomTip(value);
+    setTipPercentage("");
+
+    const totalAmount = Number(amount);
+    const customTipPercentage = value ? Number(value) : 0;
+
+    if (totalAmount && customTipPercentage >= 0) {
+      const tipAmount = (totalAmount * customTipPercentage) / 100;
+      setFinalTip(tipAmount);
+    }
+    if (numpeople > 0) {
+      handleNumPeople();
+    }
   }
 
   return (
@@ -76,7 +117,7 @@ function App() {
                   type="number"
                   placeholder="Custom Tip in Percent"
                   value={customTip}
-                  onChange={(e) => setCustomTip(e.target.value)}
+                  onChange={(e) => handleCustomTip(e)}
                 />
               </div>
               <div className="totalPerson">
@@ -84,7 +125,7 @@ function App() {
                   type="number"
                   placeholder="Number of People"
                   value={numPeople}
-                  onChange={(e) => setNumPeople(e.target.value)}
+                  onChange={(e) => handleNumPeople(e)}
                 />
               </div>
 

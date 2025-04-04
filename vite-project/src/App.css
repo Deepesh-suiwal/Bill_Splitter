@@ -18,7 +18,7 @@ body {
 
 .heading {
   text-align: center;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
 }
 
@@ -94,7 +94,7 @@ button:hover {
 }
 
 .ResetButton:hover {
-  background-color: pink;
+  background-color: #fad0c4;
   color: black;
   border: 1px solid #2d015a;
 }
