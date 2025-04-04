@@ -36,7 +36,7 @@ function App() {
 
     const totalAmount = Number(amount);
 
-    const customTipPercentage = Number(percent)
+    const customTipPercentage = Number(percent);
 
     if (totalAmount && customTipPercentage && numPeople) {
       const tipAmount = (totalAmount * customTipPercentage) / 100;
