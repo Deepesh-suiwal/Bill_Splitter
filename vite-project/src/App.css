@@ -7,6 +7,24 @@ body {
   height: 100vh;
   margin: 0;
 }
+.amount input {
+  width: 320px;
+}
+.customTip input {
+  width: 320px;
+}
+.PercentTip {
+  padding-bottom: 10px;
+}
+.totalPerson input {
+  width: 320px;
+}
+.PercentTip {
+  margin-bottom: 10px;
+}
+.PercentTip {
+  width: 300px;
+}
 
 .inputs {
   width: 600px;
